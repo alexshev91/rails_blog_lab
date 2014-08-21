@@ -1,0 +1,12 @@
+<% @tags.each do |tag| %>
+
+<div>
+	TagName: <%= tag[:name] %>
+	<% tag.posts.each do |post| %>
+	<h2>
+		<%= post.author%>
+		<%= post.title%>
+		</h2> 
+		<% end %>
+</div>
+	<% end %>

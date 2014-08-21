@@ -1,0 +1,7 @@
+<h2><%= @tag.name %></h2>
+<p> <% @tag.posts.each do |post| %></p>
+<h1> <%= post.title %></h1>
+<h2> <%= post.author %></h2>
+<a href="/posts/<%=post.id%>">click</a>
+<% end %>
+

@@ -6,10 +6,11 @@
     </div>
 
     <div>
-      <h2> Tags </h2>
-      <% @tags.each do |tag| %>
+      <h2> Comments: </h2>
+      <% @comments.each do |comment| %>
         <div>
-          <h3><%= tag.name %></h3>
+          <h3><%= comment.guest_name %></h3>
+          <p><h3><%= comment.content %></h3></p>
         </div>
       <% end %>
     </div>

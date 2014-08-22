@@ -3,4 +3,24 @@
 <p><%= @post.author %></p>
 
 <p><%= @post.description %></p>
-<p><%= @post.tags.map(&:name)%></p>
+
+<% if @post.tags.length > 0 %>
+			<p>Tags:
+			<% @post.tags.each do |tag| %>
+			<a href="/posts/<%=@post.id%>/tags/<%=tag.id%>"><%=tag.name%></a>
+			<% end %>
+			</p>
+
+ <% if @post.comments.length > 0 %>
+      <h2>Number of comments: <%= @post.comments.length%></h2>
+      <p>Comments:
+      <% @post.comments.each do |comment| %>
+      <%=comment.guest_name%>
+      <%=comment.content%>
+      <% end %>
+      </p>
+    <% end %>
+
+	<h2><a href="/posts/<%=@post.id%>/comments/new">Leave a comment</a><h2>
+
+<% end %>

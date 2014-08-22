@@ -1,12 +1,29 @@
 <% @posts.each do |post| %>
 
-<div>
-	Title: <%= post[:title]%>
-	Description: <%= post[:description]%>
-	Author: <%= post[:author]%>
-	Tags: <%= post.tags.map(&:name)%>
-	<a href="/posts/<%=post.id%>">click</a>
+    <div>
+        <h2><%= post.title %></h2>
+        <h2><%= post.author %></h2>
+        <p>
+          <%= post.description %>
+        </p>
+        <%= button_to  "Delete This?", post_path(post), method: :delete %>
+    </div>
+		<% if post.tags.length > 0 %>
+			<p>Tags:
+			<% post.tags.each do |tag| %>
+			<a href="/posts/<%=post.id%>/tags/<%=tag.id%>"><%=tag.name%></a>
+			<% end %>
+			</p>
+		<% end %>
 
-
-</div>
-	<% end %>
+  <% if post.comments.length > 0 %>
+      <h2>Number of comments: <%= post.comments.length%></h2>
+      <p>Comments:
+      <% post.comments.each do |comment| %>
+      <%=comment.guest_name%>
+      <a href="/posts/<%=post.id%>/comments/<%=comment.id%>"><%=comment.content%></a>
+      <% end %>
+      </p>
+    <% end %>
+  <a href="/posts/<%=post.id%>/comments/new"> Leave a comment </a>
+  <% end %>
